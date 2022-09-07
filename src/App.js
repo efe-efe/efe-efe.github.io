@@ -1,14 +1,19 @@
 function App() {
   return (
     <div className="App">
-      <nav>
-        <ol>
-          <li>Sobre mi</li>
-          <li>Experiencia</li>
-          <li>Contacto</li>
-        </ol>
-      </nav>
-    
+      <header>
+        <div className="logo flex">
+          efe
+        </div>
+        <nav>
+          <ul>
+            <li>Sobre mi</li>
+            <li>Experiencia</li>
+            <li>Contacto</li>
+          </ul>
+        </nav>
+      </header>
+
     </div>
   );
 }

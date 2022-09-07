@@ -1,3 +1,5 @@
+@import "./util";
+
 html {
   box-sizing: border-box;
 }
@@ -12,7 +14,25 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+a,
+a:hover,
+a:visited {
+  text-decoration: none;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.logo {
+  align-items: center;
+  justify-content: center;
+  border: 5px solid black;
+  border-radius: 50%;
+  font-family: "Dancing Script", cursive;
+  font-weight: 700;
+  font-size: 1.5rem;
+  height: 2.5rem;
+  width: 2.5rem;
 }
