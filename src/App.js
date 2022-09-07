@@ -4,6 +4,8 @@ function App() {
       <nav>
         <ol>
           <li>Sobre mi</li>
+          <li>Experiencia</li>
+          <li>Contacto</li>
         </ol>
       </nav>
     
