@@ -2,5 +2,8 @@
   "about": "Sobre mí",
   "experience": "Experiencia",
   "contact": "Contacto",
-  "resume": "Curriculum"
+  "resume": "Curriculum",
+  "salute": "Hola, mi nombre es",
+  "shortDescription": "Me gusta crear cosas geniales.",
+  "description": "Soy un desarrollador de software semi senior, especializado en el desarrollo Frontend, con vasta experiencia en tecnologías basadas en Javascript."
 }

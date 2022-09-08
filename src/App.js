@@ -61,10 +61,16 @@ function App() {
 
       <main className={headerOpen ? "blur" : ""}>
         <section className="hero flex flex-column justify-center align-start">
-          <h1>Hola, mi nombre es</h1>
+          <h1>{t("salute")}</h1>
           <h2>Fabián Urbina.</h2>
-          <h3>Me encanta crear cosas geniales.</h3>
-          <p>Soy un desarrollador de software semi senior, especializado en el desarrollo Frontend, con vasta experiencia en tecnologías basadas en Javascript y Typescript, como Angular, Vue y React, entre otras.</p>
+          <h3>{t("shortDescription")}</h3>
+          <p>{t("description")}</p>
+        </section>
+        <section className="hero flex flex-column justify-center align-start">
+          <h1>{t("salute")}</h1>
+          <h2>Fabián Urbina.</h2>
+          <h3>{t("shortDescription")}</h3>
+          <p>{t("description")}</p>
         </section>
       </main>
     </div>

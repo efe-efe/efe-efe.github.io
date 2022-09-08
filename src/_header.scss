@@ -1,6 +1,7 @@
 $headerXPadding: 2.5rem;
 
 header {
+  background-color: $dark;
   padding: 1rem $headerXPadding;
   z-index: 1;
   position: fixed;
@@ -16,6 +17,8 @@ header {
 
       a {
         color: $platinum;
+        font-family: 'Roboto Mono', monospace;
+        font-weight: 300;
 
         &::before {
           counter-increment: section; 
