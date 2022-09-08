@@ -1,0 +1,6 @@
+main {
+  &.blur {
+    filter: blur(5px) brightness(0.7);
+    transition: all 300ms ease-in-out;
+  }
+}

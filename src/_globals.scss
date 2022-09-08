@@ -1,7 +1,3 @@
-html {
-  box-sizing: border-box;
-}
-
 body {
   margin: 0;
   padding: 0;
@@ -13,6 +9,7 @@ body {
 }
 
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
@@ -22,6 +19,10 @@ a:hover,
 a:visited {
   text-decoration: none;
   color: black;
+}
+
+select {
+  display: block;
 }
 
 .flex {
@@ -62,5 +63,20 @@ a:visited {
 .hide-for-desktop {
   @include breakpoint-up(large) {
     display: none;
+  }
+}
+
+Button {
+  background-color: transparent;
+  border: 2px solid $light;
+  border-radius: 5px;
+  color: $light;
+  transition: all 200ms ease-in-out;;
+  cursor: pointer;
+  padding: 0.5rem;
+
+  &:hover{
+    background-color: $light;
+    color: white;
   }
 }

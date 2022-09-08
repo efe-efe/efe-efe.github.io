@@ -21,8 +21,26 @@ function App() {
             <li><a href="#">{`1. ${t("about")}`}</a></li>
             <li><a href="#">{`2. ${t("experience")}`}</a></li>
             <li><a href="#">{`3. ${t("contact")}`}</a></li>
-            <button>{t("resume")}</button>
-            <select
+            <li><button>{t("resume")}</button></li>
+            <li><select
+              value={i18n.language}
+              onChange={(e) =>
+                i18n.changeLanguage(e.target.value)
+              }
+            >
+              <option value="en">English</option>
+              <option value="es">Español</option>
+            </select></li>
+          </ul>
+        </nav>
+        <div className="toggle hide-for-desktop" onClick={handleHeaderToggle}>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <aside className={`hide-for-desktop ${headerOpen ? "open" : "closed"}`}>
+          <ul>
+            <li><select
               value={i18n.language}
               onChange={(e) =>
                 i18n.changeLanguage(e.target.value)
@@ -31,17 +49,22 @@ function App() {
               <option value="en">English</option>
               <option value="es">Español</option>
             </select>
+            </li>
+            <li><a href="#">{`1. ${t("about")}`}</a></li>
+            <li><a href="#">{`2. ${t("experience")}`}</a></li>
+            <li><a href="#">{`3. ${t("contact")}`}</a></li>
+            <li><button>{t("resume")}</button></li>
           </ul>
-        </nav>
-        <div className="toggle hide-for-desktop" onClick={handleHeaderToggle}>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
+        </aside>
       </header>
-      <div className={`overlay ${headerOpen ? "fade-in" : "fade-out"}`}>
-
+      <div className={`overlay hide-for-desktop ${headerOpen ? "fade-in" : "fade-out"}`}>
       </div>
+
+      <main className={headerOpen ? "blur" : ""}>
+        <h1>Hola, soy Fabián</h1>
+        <h2>Me encanta crear cosas</h2>
+        <h3>Soy un ingeniero de software especializado en el desarrollo front</h3>
+      </main>
     </div>
   );
 }
