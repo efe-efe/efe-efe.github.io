@@ -1,11 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color: $dark;
 }
 
 * {
@@ -18,15 +14,37 @@ a,
 a:hover,
 a:visited {
   text-decoration: none;
-  color: black;
 }
 
 select {
   display: block;
 }
 
+h1 {
+  color: $light;
+  font-size: 1.5rem;
+}
+
+h2 {
+  color: $white;
+  font-size: 3.5rem;
+}
+
+h3 {
+  color: $platinum;
+  font-size: 2.5rem;
+}
+
+p {
+  color: $platinum;
+}
+
 .flex {
   display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
 }
 
 .justify-around {
@@ -37,10 +55,21 @@ select {
   justify-content: space-between;
 }
 
+.justify-start {
+  justify-content: flex-start;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
 .justify-end {
   justify-content: flex-end;
 }
 
+.align-start {
+  align-items: start;
+}
 
 .align-center {
   align-items: center;
@@ -77,6 +106,6 @@ Button {
 
   &:hover{
     background-color: $light;
-    color: white;
+    color: $white;
   }
 }

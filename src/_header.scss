@@ -3,14 +3,29 @@ $headerXPadding: 2.5rem;
 header {
   padding: 1rem $headerXPadding;
   z-index: 1;
-  position: relative;
+  position: fixed;
+  width: 100%;
 
   ul {
     list-style-type: none;
+    counter-reset: section;
 
     li {
       display: block;
       padding: 10px;
+
+      a {
+        color: $platinum;
+
+        &::before {
+          counter-increment: section; 
+          content: "0" counter(section) ".";
+          margin-right: 5px;
+          color: $light;
+          font-size: 1rem;
+          text-align: right;
+        }
+      }
     }
   }
 
@@ -23,6 +38,7 @@ header {
     width: min(75vw, 400px);
     transition: all 300ms ease-in-out;
     box-shadow: -10px 0px 30px -15px $dark;
+    background-color: $space;
 
     &.open {
       transform: translateX(0);
@@ -34,7 +50,7 @@ header {
       > span:first-child {
         transform: rotate(45deg);
       }
-      
+
       > span:nth-child(2) {
         opacity: 0;
       }
@@ -67,11 +83,11 @@ header {
       display: block;
       width: 26px;
       height: 2px;
-      background-color: $dark;
+      background-color: $light;
       transition: all 300ms ease-in-out;
       transform-origin: 3px 1px;
 
-      &:not(:last-child){
+      &:not(:last-child) {
         margin-bottom: 5px;
       }
     }

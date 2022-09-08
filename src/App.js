@@ -17,9 +17,9 @@ function App() {
         </div>
         <nav className="hide-for-mobile">
           <ul className="flex">
-            <li><a href="#">{`1. ${t("about")}`}</a></li>
-            <li><a href="#">{`2. ${t("experience")}`}</a></li>
-            <li><a href="#">{`3. ${t("contact")}`}</a></li>
+            <li><a href="#">{t("about")}</a></li>
+            <li><a href="#">{t("experience")}</a></li>
+            <li><a href="#">{t("contact")}</a></li>
             <li><button>{t("resume")}</button></li>
             <li><select
               value={i18n.language}
@@ -49,9 +49,9 @@ function App() {
               <option value="es">Español</option>
             </select>
             </li>
-            <li><a href="#">{`1. ${t("about")}`}</a></li>
-            <li><a href="#">{`2. ${t("experience")}`}</a></li>
-            <li><a href="#">{`3. ${t("contact")}`}</a></li>
+            <li><a href="#">{t("about")}</a></li>
+            <li><a href="#">{t("experience")}</a></li>
+            <li><a href="#">{t("contact")}</a></li>
             <li><button>{t("resume")}</button></li>
           </ul>
         </aside>
@@ -60,9 +60,12 @@ function App() {
       </div>
 
       <main className={headerOpen ? "blur" : ""}>
-        <h1>Hola, soy Fabián</h1>
-        <h2>Me encanta crear cosas</h2>
-        <h3>Soy un ingeniero de software especializado en el desarrollo front</h3>
+        <section className="hero flex flex-column justify-center align-start">
+          <h1>Hola, mi nombre es</h1>
+          <h2>Fabián Urbina.</h2>
+          <h3>Me encanta crear cosas geniales.</h3>
+          <p>Soy un desarrollador de software semi senior, especializado en el desarrollo Frontend, con vasta experiencia en tecnologías basadas en Javascript y Typescript, como Angular, Vue y React, entre otras.</p>
+        </section>
       </main>
     </div>
   );
