@@ -1,13 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 function App() {
   const { t, i18n } = useTranslation();
   const [headerOpen, setHeaderOpen] = useState(false);
 
+  const toggleLockBody = (locked) => {
+    const body = document.querySelector("body");
+    body.classList.toggle("locked", locked);
+  }
+
   const handleHeaderToggle = () => {
     setHeaderOpen(headerOpen => !headerOpen);
   }
+
+  useEffect(() => {
+    toggleLockBody(headerOpen);
+  }, [headerOpen])
 
   return (
     <div className="App">
