@@ -6,7 +6,6 @@ function App() {
   const [headerOpen, setHeaderOpen] = useState(false);
 
   const handleHeaderToggle = () => {
-    console.log("hey")
     setHeaderOpen(headerOpen => !headerOpen);
   }
 

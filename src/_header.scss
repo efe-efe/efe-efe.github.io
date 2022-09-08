@@ -60,7 +60,9 @@ header {
   }
 
   .toggle {
-    z-index: 10;
+    z-index: 1;
+    cursor: pointer;
+
     > span {
       display: block;
       width: 26px;
