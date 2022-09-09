@@ -5,10 +5,16 @@ main {
   }
 
   section {
-    padding: 0 6rem;
+    max-width: 92.5rem;
+    margin: 0 auto;
 
     &.hero {
       min-height: 100vh;
+
+      @include breakpoint-down(large){
+        padding: 0 6rem;
+      }
+      
       p {
         max-width: 40rem;
       }
