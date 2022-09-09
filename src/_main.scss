@@ -11,8 +11,8 @@ main {
     &.hero {
       min-height: 100vh;
 
-      @include breakpoint-down(large){
-        padding: 0 6rem;
+      @include breakpoint-down(medium){
+        padding: 0 1.25rem;
       }
       
       p {

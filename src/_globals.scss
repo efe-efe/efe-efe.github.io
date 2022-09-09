@@ -51,6 +51,24 @@ p {
   letter-spacing: 0.1rem;
 }
 
+@include breakpoint-down(medium){
+  h1 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  h2, h3 {
+    font-size: 2.5rem;
+  }
+
+  p {
+    font-weight: 300;
+    color: $platinum;
+    font-size: 1.1rem;
+    letter-spacing: 0;
+  }
+}
+
 .flex {
   display: flex;
 }
@@ -96,10 +114,12 @@ p {
 }
 
 .show-up {
+  opacity: 0;
   animation: show-up 750ms ease-in-out forwards;
 }
 
 .show-down {
+  opacity: 0;
   animation: show-down 750ms ease-in-out forwards;
 }
 
