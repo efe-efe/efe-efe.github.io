@@ -95,6 +95,14 @@ p {
   animation: fade-out 300ms ease-in-out forwards;
 }
 
+.show-up {
+  animation: show-up 750ms ease-in-out forwards;
+}
+
+.show-down {
+  animation: show-down 750ms ease-in-out forwards;
+}
+
 .hide-for-mobile {
   @include breakpoint-down(medium) {
     display: none;

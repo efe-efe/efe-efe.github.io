@@ -18,6 +18,24 @@ function App() {
     toggleLockBody(headerOpen);
   }, [headerOpen])
 
+  useEffect(() => {
+    const navElements = document.querySelectorAll("nav ul li");
+    const hero = document.querySelector(".hero");
+    const delay = 100;
+
+    if (navElements) {
+      navElements.forEach((children, index) => {
+        children.style.animationDelay = index * delay + "ms";
+      });
+    }
+
+    if (hero) {
+      hero.childNodes.forEach((children, index) => {
+        children.style.animationDelay = (index * delay) + (delay * navElements.length) + "ms";
+      });
+    }
+  }, []);
+
   return (
     <div className="App">
       <header className={`flex justify-end align-center ${headerOpen ? "open" : ""}`}>
@@ -25,12 +43,12 @@ function App() {
           efe
         </div>
         <nav className="hide-for-mobile">
-          <ul className="flex">
-            <li><a href="#">{t("about")}</a></li>
-            <li><a href="#">{t("experience")}</a></li>
-            <li><a href="#">{t("contact")}</a></li>
-            <li><button>{t("resume")}</button></li>
-            <li><select
+          <ul className="flex align-center">
+            <li className="show-down"><a href="#">{t("about")}</a></li>
+            <li className="show-down"><a href="#">{t("experience")}</a></li>
+            <li className="show-down"><a href="#">{t("contact")}</a></li>
+            <li className="show-down"><button>{t("resume")}</button></li>
+            <li className="show-down"><select
               value={i18n.language}
               onChange={(e) =>
                 i18n.changeLanguage(e.target.value)
@@ -70,10 +88,10 @@ function App() {
 
       <main className={headerOpen ? "blur" : ""}>
         <section className="hero flex flex-column justify-center align-start">
-          <h1>{t("salute")}</h1>
-          <h2>Fabián Urbina.</h2>
-          <h3>{t("shortDescription")}</h3>
-          <p>{t("description")}</p>
+          <h1 className="show-up">{t("salute")}</h1>
+          <h2 className="show-up">Fabián Urbina.</h2>
+          <h3 className="show-up">{t("shortDescription")}</h3>
+          <p className="show-up">{t("description")}</p>
         </section>
         <section className="hero flex flex-column justify-center align-start">
           <h1>{t("salute")}</h1>
