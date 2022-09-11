@@ -1,9 +1,16 @@
 {
   "about": "Sobre mí",
+  "aboutMe": "Sobre mí",
   "experience": "Experiencia",
   "contact": "Contacto",
   "resume": "Curriculum",
   "salute": "Hola, mi nombre es",
-  "shortDescription": "Me gusta crear cosas geniales.",
-  "description": "Soy un desarrollador de software semi senior, especializado en el desarrollo Frontend, con vasta experiencia en tecnologías basadas en Javascript."
+  "shortDescription": "Diseño y desarrollo para la web.",
+  "description": "Soy un desarrollador de software semi senior, especializado en el desarrollo Frontend, con vasta experiencia en tecnologías basadas en Javascript.",
+  "bioFirst": "Hola, mi nombre es Fabián Urbina, y me encanta diseñar y crear cosas. Desde pequeño me interesó el dibujo, la música, y por su puesto, los videojuegos. Cuando tenía 17 años encontré en el desarrollo de software una forma de combinar todo eso y crear grandes cosas.",
+  "bioSecond": "Actualmente he tenido la oportunidad de trabajar en una <0>empresa especializada en pruebas de rendimiento</0>, uno de las <1>páginas de e-commerce</1> más grandes de Chile y como desarrollador de <2>videojuegos</2> independiente.",
+  "visitAssayware": "Visita Assayware, una compañía especializada en la ejecución de pruebas de performance.",
+  "visitYapo": "Visita Yapo, una de las plataformas de e-commerce mas grandes de Chile.",
+  "visitSunsfanGG": "Visita Sunsfan GG, una compañía desarrolladora de videojuegos.",
+  "picture": "Foto de Fabián Urbina"
 }
