@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: $dark;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 * {
@@ -23,14 +23,15 @@ select {
 
 h1 {
   color: $light;
-  font-size: 1rem;
+  font-size: $font-sm;
   margin-bottom: 1.8rem;
   font-weight: 300;
-  font-family: 'Roboto Mono', monospace;
+  font-family: "Roboto Mono", monospace;
 }
 
-h2, h3 {
-  font-size: 4rem;
+h2,
+h3 {
+  font-size: $font-xl;
   letter-spacing: 0.125rem;
 }
 
@@ -44,28 +45,62 @@ h3 {
   margin-bottom: 1.25rem;
 }
 
+h4 {
+  color: $white;
+  font-size: $font-md;
+  counter-reset: section;
+  display: flex;
+  white-space: nowrap;
+  align-items: baseline;
+  margin-bottom: 2.5rem;
+
+  &::before {
+    margin-right: 0.5rem;
+    counter-increment: section;
+    content: "0" counter(section) ".";
+    color: $light;
+    font-size: $font-xs;
+    font-family: "Roboto Mono", monospace;
+    font-weight: 300;
+  }
+
+  &::after {
+    content: "";
+    display: block;
+    position: relative;
+    top: -6px;
+    margin-left: 0.5rem;
+    width: 100%;
+    height: 1px;
+    background-color: $lightPlatinum;
+  }
+}
+
 p {
   font-weight: 300;
   color: $platinum;
-  font-size: 1.1rem;
+  font-size: $font-sm;
   letter-spacing: 0.1rem;
+  margin-bottom: 1rem;
 }
 
-@include breakpoint-down(medium){
+@include breakpoint-down(medium) {
   h1 {
-    font-size: 1rem;
+    font-size: $font-sm;
     margin-bottom: 1rem;
   }
 
-  h2, h3 {
-    font-size: 2.5rem;
+  h2,
+  h3 {
+    font-size: $font-lg;
+    letter-spacing: 0.075rem;
   }
 
   p {
     font-weight: 300;
     color: $platinum;
-    font-size: 1.1rem;
-    letter-spacing: 0;
+    font-size: $font-xs;
+    letter-spacing: 0.05rem;
   }
 }
 
@@ -140,11 +175,11 @@ Button {
   border: 2px solid $light;
   border-radius: 5px;
   color: $light;
-  transition: all 200ms ease-in-out;;
+  transition: all 200ms ease-in-out;
   cursor: pointer;
   padding: 0.5rem;
 
-  &:hover{
+  &:hover {
     background-color: $light;
     color: $white;
   }

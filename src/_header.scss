@@ -7,6 +7,10 @@ header {
   position: fixed;
   width: 100%;
 
+  @include breakpoint-down(medium) {
+    padding: 1rem 1rem;
+  }
+
   ul {
     list-style-type: none;
     counter-reset: section;
@@ -16,16 +20,16 @@ header {
       padding: 10px;
 
       a {
-        color: $platinum;
+        color: $white;
         font-family: 'Roboto Mono', monospace;
         font-weight: 300;
+        font-size: $font-xs;
 
         &::before {
           counter-increment: section; 
           content: "0" counter(section) ".";
           margin-right: 5px;
           color: $light;
-          font-size: 1rem;
           text-align: right;
         }
       }

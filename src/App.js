@@ -1,5 +1,6 @@
+/* eslint-disable jsx-a11y/anchor-has-content */
 import { useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 
 function App() {
   const { t, i18n } = useTranslation();
@@ -93,11 +94,31 @@ function App() {
           <h3 className="show-up">{t("shortDescription")}</h3>
           <p className="show-up">{t("description")}</p>
         </section>
-        <section className="hero flex flex-column justify-center align-start">
-          <h1>{t("salute")}</h1>
-          <h2>Fabián Urbina.</h2>
-          <h3>{t("shortDescription")}</h3>
-          <p>{t("description")}</p>
+        <section className="about">
+          <div className="bio">
+            <h4>{t("aboutMe")}</h4>
+            <p>{t("bioFirst")}</p>
+            <p>
+              <Trans i18nKey="bioSecond">
+                <a aria-label={t("visitAssayware")} href="https://www.assayware.com" />
+                <a aria-label={t("visitYapo")} href="https://www.yapo.cl" />
+                <a aria-label={t("visitSunsfanGG")} href="https://www.sunsfan.gg" />
+              </Trans>
+            </p>
+          </div>
+
+          <div className="flex justify-center">
+            <div className="wrapper">
+              <img alt={t("picture")} src="https://media-exp1.licdn.com/dms/image/D4E03AQGhWZabQMdb_g/profile-displayphoto-shrink_800_800/0/1661639551210?e=1668643200&v=beta&t=QNiwMcgexL53GaKry9i9og5oowRCNfW8TtTB0NzjDYA" />
+            </div>
+          </div>
+
+        </section>
+        <section className="about">
+          <h4>{t("about")}</h4>
+        </section>
+        <section className="about">
+          <h4>{t("about")}</h4>
         </section>
       </main>
     </div>

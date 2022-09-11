@@ -1,4 +1,10 @@
 main {
+  a,
+  a:hover,
+  a:visited {
+    color: $light;
+  }
+
   &.blur {
     filter: blur(5px) brightness(0.7);
     transition: all 300ms ease-in-out;
@@ -8,15 +14,37 @@ main {
     max-width: 92.5rem;
     margin: 0 auto;
 
+    @include breakpoint-down(medium) {
+      padding: 0 1.25rem;
+    }
+
     &.hero {
       min-height: 100vh;
 
-      @include breakpoint-down(medium){
-        padding: 0 1.25rem;
-      }
-      
       p {
         max-width: 40rem;
+      }
+    }
+    
+    &.about {
+      .bio {
+        margin-bottom: 4rem;
+      }
+
+      .wrapper {
+        background-color: $light;
+        border-radius: 10px;
+        width: 60%;
+        border: 1px solid $light;
+        margin-bottom: 4rem;
+
+        img {
+          border-radius: 10px;
+          mix-blend-mode: darken;
+          filter: grayscale(100%) contrast(1);
+          height: 100%;
+          width: 100%;
+        }
       }
     }
   }
