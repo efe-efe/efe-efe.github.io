@@ -1,9 +1,16 @@
 {
   "about": "About",
+  "aboutMe": "About me",
   "experience": "Experience",
   "contact": "Contact",
   "resume": "Resume",
   "salute": "Hi, my name is",
-  "shortDescription": "I like to create cool things.",
-  "description": "Im a semi senior software developer, specialized in Frontend development, with vast experience in Javascript based technologies."
+  "shortDescription": "I design and develop for the web.",
+  "description": "Im a semi senior software developer, specialized in Frontend development, with vast experience in Javascript based technologies.",
+  "bioFirst": "Hello, Im Fabián Urbina, and I love designing and creating stuff.",
+  "bioSecond": "To the date, I have had the opportunity to work in a <0>company specializing in performance testing</0>, one of the largest <1>e-commerce pages</1> in Chile and as an independent developer of <2>video games</2>.",
+  "visitAssayware": "Visit Assayware, a company specialized in running performance tests.",
+  "visitYapo": "Visit Yapo, one of the biggest e-commerce companies in Chile.",
+  "visitSunsfanGG": "Visit Sunsfan GG, a game development company.",
+  "picture": "Fabián Urbina's picture"
 }
