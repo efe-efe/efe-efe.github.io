@@ -1,9 +1,11 @@
 
 // 640px, 1024px, 1400px
 $breakpoints-up: (
-  "medium": "40em",
-  "large": "64em",
-  "xlarge": "87.5em",
+  "small": "576px",
+  "medium": "768px",
+  "large": "992px",
+  "xlarge": "1200px",
+  "xxlarge": "1400p"x
 );
 
 // 639px, 1023px, 1399px

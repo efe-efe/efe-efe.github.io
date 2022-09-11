@@ -107,18 +107,13 @@ function App() {
             </p>
           </div>
 
-          <div className="flex justify-center">
-            <div className="wrapper">
-              <img alt={t("picture")} src="https://media-exp1.licdn.com/dms/image/D4E03AQGhWZabQMdb_g/profile-displayphoto-shrink_800_800/0/1661639551210?e=1668643200&v=beta&t=QNiwMcgexL53GaKry9i9og5oowRCNfW8TtTB0NzjDYA" />
-            </div>
+          <div className="wrapper">
+            <img alt={t("picture")} src="https://media-exp1.licdn.com/dms/image/D4E03AQGhWZabQMdb_g/profile-displayphoto-shrink_800_800/0/1661639551210?e=1668643200&v=beta&t=QNiwMcgexL53GaKry9i9og5oowRCNfW8TtTB0NzjDYA" />
           </div>
 
         </section>
-        <section className="about">
-          <h4>{t("about")}</h4>
-        </section>
-        <section className="about">
-          <h4>{t("about")}</h4>
+        <section className="experience">
+          <h4>{t("experience")}</h4>
         </section>
       </main>
     </div>

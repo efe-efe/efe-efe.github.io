@@ -13,9 +13,10 @@ main {
   section {
     max-width: 92.5rem;
     margin: 0 auto;
+    padding: 0 1.25rem;
 
-    @include breakpoint-down(medium) {
-      padding: 0 1.25rem;
+    @include breakpoint-up(medium) {
+      padding: 0;
     }
 
     &.hero {
@@ -27,6 +28,8 @@ main {
     }
     
     &.about {
+      max-width: 60rem;
+
       .bio {
         margin-bottom: 4rem;
       }
@@ -34,15 +37,26 @@ main {
       .wrapper {
         background-color: $light;
         border-radius: 10px;
-        width: 60%;
         border: 1px solid $light;
-        margin-bottom: 4rem;
+        margin: 0 auto 4rem auto;
+        max-width: 300px;
+        width: 60%;
 
         img {
           border-radius: 10px;
           mix-blend-mode: darken;
           filter: grayscale(100%) contrast(1);
           height: 100%;
+          width: 100%;
+        }
+      }
+
+      @include breakpoint-up(large) {
+        display: grid;
+        grid-template-columns: 3fr 2fr;
+        grid-gap: 4rem;
+
+        .wrapper {
           width: 100%;
         }
       }

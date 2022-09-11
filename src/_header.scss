@@ -2,14 +2,10 @@ $headerXPadding: 2.5rem;
 
 header {
   background-color: $dark;
-  padding: 1rem $headerXPadding;
+  padding: 1rem 1rem;
   z-index: 1;
   position: fixed;
   width: 100%;
-
-  @include breakpoint-down(medium) {
-    padding: 1rem 1rem;
-  }
 
   ul {
     list-style-type: none;
@@ -98,5 +94,9 @@ header {
         margin-bottom: 5px;
       }
     }
+  }
+
+  @include breakpoint-up(large) {
+    padding: 1rem $headerXPadding;
   }
 }

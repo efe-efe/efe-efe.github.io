@@ -24,15 +24,15 @@ select {
 h1 {
   color: $light;
   font-size: $font-sm;
-  margin-bottom: 1.8rem;
+  margin-bottom: 1rem;
   font-weight: 300;
   font-family: "Roboto Mono", monospace;
 }
 
 h2,
 h3 {
-  font-size: $font-xl;
-  letter-spacing: 0.125rem;
+  font-size: $font-lg;
+  letter-spacing: 0.075rem;
 }
 
 h2 {
@@ -69,7 +69,7 @@ h4 {
     display: block;
     position: relative;
     top: -6px;
-    margin-left: 0.5rem;
+    margin-left: 1rem;
     width: 100%;
     height: 1px;
     background-color: $lightPlatinum;
@@ -77,31 +77,10 @@ h4 {
 }
 
 p {
-  font-weight: 300;
   color: $platinum;
-  font-size: $font-sm;
-  letter-spacing: 0.1rem;
+  font-size: $font-xs;
+  letter-spacing: 0.05rem;
   margin-bottom: 1rem;
-}
-
-@include breakpoint-down(medium) {
-  h1 {
-    font-size: $font-sm;
-    margin-bottom: 1rem;
-  }
-
-  h2,
-  h3 {
-    font-size: $font-lg;
-    letter-spacing: 0.075rem;
-  }
-
-  p {
-    font-weight: 300;
-    color: $platinum;
-    font-size: $font-xs;
-    letter-spacing: 0.05rem;
-  }
 }
 
 .flex {
@@ -158,18 +137,6 @@ p {
   animation: show-down 750ms ease-in-out forwards;
 }
 
-.hide-for-mobile {
-  @include breakpoint-down(medium) {
-    display: none;
-  }
-}
-
-.hide-for-desktop {
-  @include breakpoint-up(large) {
-    display: none;
-  }
-}
-
 Button {
   background-color: transparent;
   border: 2px solid $light;
@@ -187,4 +154,34 @@ Button {
 
 .locked {
   overflow: hidden;
+}
+
+.hide-for-mobile {
+  @include breakpoint-down(medium) {
+    display: none;
+  }
+}
+
+.hide-for-desktop {
+  @include breakpoint-up(large) {
+    display: none;
+  }
+}
+
+@include breakpoint-up(large) {
+  h1 {
+    margin-bottom: 1.8rem;
+  }
+
+  h2,
+  h3 {
+    font-size: $font-xl;
+    letter-spacing: 0.125rem;
+  }
+
+  p {
+    color: $platinum;
+    font-size: $font-sm;
+    letter-spacing: 0.1rem;
+  }
 }
