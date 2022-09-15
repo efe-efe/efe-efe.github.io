@@ -1,8 +1,17 @@
 main {
+  counter-reset: section;
+
   a,
   a:hover,
   a:visited {
     color: $light;
+  }
+
+  h4 {
+    &::before {
+      counter-increment: section;
+      content: "0" counter(section) ".";
+    }
   }
 
   &.blur {
@@ -13,10 +22,10 @@ main {
   section {
     max-width: 92.5rem;
     margin: 0 auto;
-    padding: 0 1.25rem;
+    padding: 6.25rem 1.25rem;
 
     @include breakpoint-up(medium) {
-      padding: 0;
+      padding: 100px 0;
     }
 
     &.hero {
@@ -26,7 +35,7 @@ main {
         max-width: 40rem;
       }
     }
-    
+
     &.about {
       max-width: 60rem;
 
@@ -61,5 +70,48 @@ main {
         }
       }
     }
+
+    &.experience {
+      max-width: 50rem;
+    }
+
+    &.contact {
+      max-width: 60rem;
+      text-align: center;
+
+      h4 {
+        font-size: $font-sm;
+        font-family: "Roboto Mono", monospace;
+        color: $light;
+        font-weight: 300;
+        margin-bottom: 0.5rem;
+        line-height: 1;
+
+        &::after {
+          display: none;
+        }
+      }
+
+      h2 {
+        margin-bottom: 2rem;
+      }
+      
+      p {
+        margin-bottom: 2rem;
+      }
+
+      li {
+        text-align: left;
+        margin-bottom: 1rem;
+
+        &::marker {
+          color: $light;
+        }
+      }
+    }
   }
+}
+
+footer {
+  height: 20rem;
 }

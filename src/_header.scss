@@ -9,7 +9,7 @@ header {
 
   ul {
     list-style-type: none;
-    counter-reset: section;
+    counter-reset: list;
 
     li {
       display: block;
@@ -22,8 +22,8 @@ header {
         font-size: $font-xs;
 
         &::before {
-          counter-increment: section; 
-          content: "0" counter(section) ".";
+          counter-increment: list; 
+          content: "0" counter(list) ".";
           margin-right: 5px;
           color: $light;
           text-align: right;
