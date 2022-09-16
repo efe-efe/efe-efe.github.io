@@ -54,11 +54,21 @@ main {
         margin: 0 auto 4rem auto;
         max-width: 300px;
         width: 60%;
+        transition: transform ease-in-out 0.3s;
+
+        &:hover {
+          transform: scale(1.1);
+
+          img {
+            filter: none;
+            mix-blend-mode: normal;
+          }
+        }
 
         img {
           border-radius: 10px;
           mix-blend-mode: darken;
-          filter: grayscale(100%) contrast(1);
+          filter: grayscale(100%) contrast(0.9);
           height: 100%;
           width: 100%;
         }
@@ -99,7 +109,7 @@ main {
       h2 {
         margin-bottom: 2rem;
       }
-      
+
       p {
         margin-bottom: 2rem;
       }
