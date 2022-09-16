@@ -1,4 +1,5 @@
 $headerXPadding: 2.5rem;
+$headerHeight: 5rem;
 
 header {
   background-color: $dark;
@@ -6,6 +7,19 @@ header {
   z-index: 1;
   position: fixed;
   width: 100%;
+  height: $headerHeight;
+  transform: translateY(0);
+  transition-property: opacity, transform;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-out;
+
+  &.hidden {
+    transform: translateY(-$headerHeight);
+  }
+
+  &.leaning {
+    box-shadow: -10px 0 30px -15px black;
+  }
 
   ul {
     list-style-type: none;
@@ -17,12 +31,12 @@ header {
 
       a {
         color: $white;
-        font-family: 'Roboto Mono', monospace;
+        font-family: "Roboto Mono", monospace;
         font-weight: 300;
         font-size: $font-xs;
 
         &::before {
-          counter-increment: list; 
+          counter-increment: list;
           content: "0" counter(list) ".";
           margin-right: 5px;
           color: $light;

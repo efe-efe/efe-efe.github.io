@@ -19,7 +19,10 @@ function NavLinks({ slowDown }) {
 
 function App() {
   const { t, i18n } = useTranslation();
-  const [headerOpen, setHeaderOpen] = useState(false);
+  const [sideBarOpen, setSideBarOpen] = useState(false);
+  const [shouldHideHeader, setShouldHideHeader] = useState(false);
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [scrollPreviousPosition, setScrollPreviousPosition] = useState(0);
 
   const toggleLockBody = (locked) => {
     const body = document.querySelector("body");
@@ -27,12 +30,28 @@ function App() {
   }
 
   const handleHeaderToggle = () => {
-    setHeaderOpen(headerOpen => !headerOpen);
+    setSideBarOpen(sideBarOpen => !sideBarOpen);
+  }
+
+  const handleScroll = () => {
+    setScrollPosition(window.scrollY);
+
+    //TODO: Find a better way to achieve this
+    setTimeout(() => setScrollPreviousPosition(window.scrollY), 0);
   }
 
   useEffect(() => {
-    toggleLockBody(headerOpen);
-  }, [headerOpen])
+    toggleLockBody(sideBarOpen);
+  }, [sideBarOpen])
+
+  useEffect(() => {
+    if (scrollPosition < scrollPreviousPosition) {
+      setShouldHideHeader(false);
+    } else {
+      setShouldHideHeader(scrollPosition > 70);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [scrollPosition])
 
   useEffect(() => {
     const navElements = document.querySelectorAll("nav ul li");
@@ -50,11 +69,22 @@ function App() {
         children.style.animationDelay = (index * delay) + (delay * navElements.length) + "ms";
       });
     }
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    }
   }, []);
 
   return (
     <div className="App">
-      <header className={`flex justify-end align-center ${headerOpen ? "open" : ""}`}>
+      <header className={`
+        flex justify-end align-center 
+        ${sideBarOpen ? "open" : ""}
+        ${shouldHideHeader ? "hidden" : ""}
+        ${scrollPosition > 70 ? "leaning" : ""}
+      `}>
         <a className="logo flex" href="#hero">
           efe
         </a>
@@ -77,7 +107,7 @@ function App() {
           <span></span>
           <span></span>
         </div>
-        <aside className={`hide-for-desktop ${headerOpen ? "open" : "closed"}`}>
+        <aside className={`hide-for-desktop ${sideBarOpen ? "open" : "closed"}`}>
           <ul>
             <li><select
               value={i18n.language}
@@ -88,15 +118,15 @@ function App() {
               <option value="en">English</option>
               <option value="es">Español</option>
             </select>
-              <NavLinks />
             </li>
+            <NavLinks />
           </ul>
         </aside>
       </header>
-      <div className={`overlay hide-for-desktop ${headerOpen ? "fade-in" : "fade-out"}`}>
+      <div className={`overlay hide-for-desktop ${sideBarOpen ? "fade-in" : "fade-out"}`}>
       </div>
 
-      <main className={headerOpen ? "blur" : ""}>
+      <main className={sideBarOpen ? "blur" : ""}>
         <section id="hero" className="hero flex flex-column justify-center align-start">
           <h1 className="show-up">{t("salute")}</h1>
           <h2 className="show-up">Fabián Urbina.</h2>

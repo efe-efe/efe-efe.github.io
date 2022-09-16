@@ -20,12 +20,16 @@ main {
   }
 
   section {
-    max-width: 92.5rem;
     margin: 0 auto;
     padding: 6.25rem 1.25rem;
 
     @include breakpoint-up(medium) {
-      padding: 100px 0;
+      padding: 6.25rem 1.25rem;
+    }
+
+    @include breakpoint-up(xxlarge) {
+      padding: 6.25rem 0;
+      max-width: 80.5rem;
     }
 
     &.hero {
