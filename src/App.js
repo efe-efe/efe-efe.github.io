@@ -90,6 +90,15 @@ function App() {
   return (
     <div className="App">
       <header>
+        <div className={`toggle hide-for-desktop
+          ${sideBarOpen ? "open" : ""}
+          ${shouldHideHeader ? "hidden" : ""}
+        `} onClick={handleHeaderToggle}>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
         <nav className={`
           flex justify-end align-center 
           ${sideBarOpen ? "open" : ""}
@@ -113,11 +122,6 @@ function App() {
               </select>
             </li>
           </ul>
-          <div className="toggle hide-for-desktop" onClick={handleHeaderToggle}>
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
         </nav>
 
         <aside className={`hide-for-desktop ${sideBarOpen ? "open" : "closed"}`}>

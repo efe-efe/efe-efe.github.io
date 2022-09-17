@@ -1,7 +1,54 @@
 $headerHeight: 5rem;
 $headerPadding: 1rem;
 
+$toggleWidth: 1.625rem;
+$togglePadding: 0.625rem + $headerPadding;
+
 header {
+  .toggle {
+    position: fixed;
+    left: 100%;
+    transform: translateX(-(calc($toggleWidth + $togglePadding * 2)));
+    padding: $togglePadding;
+    z-index: 3;
+    transition: transform ease-out 0.3s;
+
+    cursor: pointer;
+
+    &.hidden {
+      transform: translate(
+        -(calc($toggleWidth + $togglePadding * 2), -$headerHeight)
+      );
+    }
+
+    > span {
+      display: block;
+      width: $toggleWidth;
+      height: 2px;
+      background-color: $light;
+      transition: all 300ms ease-in-out;
+      transform-origin: 3px 1px;
+
+      &:not(:last-child) {
+        margin-bottom: 5px;
+      }
+    }
+
+    &.open {
+      > span:first-child {
+        transform: rotate(45deg);
+      }
+
+      > span:nth-child(2) {
+        opacity: 0;
+      }
+
+      > span:last-child {
+        transform: rotate(-45deg);
+      }
+    }
+  }
+
   ul {
     list-style-type: none;
     counter-reset: list;
@@ -62,22 +109,6 @@ header {
       box-shadow: -10px 0 30px -15px black;
     }
 
-    &.open {
-      .toggle {
-        > span:first-child {
-          transform: rotate(45deg);
-        }
-
-        > span:nth-child(2) {
-          opacity: 0;
-        }
-
-        > span:last-child {
-          transform: rotate(-45deg);
-        }
-      }
-    }
-
     .logo {
       margin-right: auto;
       align-items: center;
@@ -90,24 +121,6 @@ header {
       font-size: 1.5rem;
       height: 3rem;
       width: 3rem;
-    }
-
-    .toggle {
-      z-index: 3;
-      cursor: pointer;
-
-      > span {
-        display: block;
-        width: 26px;
-        height: 2px;
-        background-color: $light;
-        transition: all 300ms ease-in-out;
-        transform-origin: 3px 1px;
-
-        &:not(:last-child) {
-          margin-bottom: 5px;
-        }
-      }
     }
 
     @include breakpoint-up(large) {
