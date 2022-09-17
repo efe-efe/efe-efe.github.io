@@ -2,6 +2,8 @@
 import { useEffect, useState } from "react";
 import { Trans, useTranslation } from "react-i18next";
 
+const resumeURL = "https://getonbrd-prod.s3.amazonaws.com/uploads/cv/ba25467ac2da640b3831edf51bb4703d/Fabian_Urbina_Curriculum.pdf?X-Amz-Expires=86400&amp;X-Amz-Date=20220915T121348Z&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAJT5MYUSOEN4SITVA%2F20220915%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=abb8413f9e6e85cd2c3e399405dee187b06a83e7dd2da19e1f00148931011a93"
+
 function NavLinks({ slowDown }) {
   const { t } = useTranslation();
 
@@ -10,7 +12,7 @@ function NavLinks({ slowDown }) {
       <li><a href="#about" className={slowDown ? "slow-down" : ""}>{t("about")}</a></li>
       <li><a className={slowDown ? "slow-down" : ""} href="#experience">{t("experience")}</a></li>
       <li><a className={slowDown ? "slow-down" : ""} href="#contact">{t("contact")}</a></li>
-      <li><a className="button" href="https://getonbrd-prod.s3.amazonaws.com/uploads/cv/ba25467ac2da640b3831edf51bb4703d/Fabian_Urbina_Curriculum.pdf?X-Amz-Expires=86400&amp;X-Amz-Date=20220915T121348Z&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAJT5MYUSOEN4SITVA%2F20220915%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=abb8413f9e6e85cd2c3e399405dee187b06a83e7dd2da19e1f00148931011a93" download>
+      <li><a className="button" href={resumeURL} download>
         {t("resume")}
       </a></li>
     </>
@@ -50,83 +52,92 @@ function App() {
     } else {
       setShouldHideHeader(scrollPosition > 70);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [scrollPosition])
 
   useEffect(() => {
-    const navElements = document.querySelectorAll("nav ul li");
+    const navbarActionElements = document.querySelectorAll("nav ul li");
+    const asideLinks = document.querySelectorAll("aside ul li a");
     const hero = document.querySelector(".hero");
     const delay = 100;
 
-    if (navElements) {
-      navElements.forEach((children, index) => {
+    if (navbarActionElements) {
+      navbarActionElements.forEach((children, index) => {
         children.style.animationDelay = index * delay + "ms";
       });
     }
 
+    for (const link of asideLinks) {
+      link.addEventListener("click", () => setSideBarOpen(false));
+    }
+
     if (hero) {
       hero.childNodes.forEach((children, index) => {
-        children.style.animationDelay = (index * delay) + (delay * navElements.length) + "ms";
+        children.style.animationDelay = (index * delay) + (delay * navbarActionElements.length) + "ms";
       });
     }
 
     window.addEventListener("scroll", handleScroll);
 
     return () => {
+      for (const link of asideLinks) {
+        link.removeEventListener("click", () => setSideBarOpen(false));
+      }
       window.removeEventListener("scroll", handleScroll);
     }
   }, []);
 
   return (
     <div className="App">
-      <header className={`
-        flex justify-end align-center 
-        ${sideBarOpen ? "open" : ""}
-        ${shouldHideHeader ? "hidden" : ""}
-        ${scrollPosition > 70 ? "leaning" : ""}
-      `}>
-        <a className="logo flex" href="#hero">
-          efe
-        </a>
-        <nav className="hide-for-mobile">
-          <ul className="flex align-center">
+      <header>
+        <nav className={`
+          flex justify-end align-center 
+          ${sideBarOpen ? "open" : ""}
+          ${shouldHideHeader ? "hidden" : ""}
+          ${scrollPosition > 70 ? "leaning" : ""}
+        `}>
+          <a className="logo flex" href="#hero">
+            efe
+          </a>
+          <ul className="hide-for-mobile flex align-center">
             <NavLinks slowDown={true} />
-            <li className="show-down"><select
-              value={i18n.language}
-              onChange={(e) =>
-                i18n.changeLanguage(e.target.value)
-              }
-            >
-              <option value="en">English</option>
-              <option value="es">Español</option>
-            </select></li>
-          </ul>
-        </nav>
-        <div className="toggle hide-for-desktop" onClick={handleHeaderToggle}>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <aside className={`hide-for-desktop ${sideBarOpen ? "open" : "closed"}`}>
-          <ul>
-            <li><select
-              value={i18n.language}
-              onChange={(e) =>
-                i18n.changeLanguage(e.target.value)
-              }
-            >
-              <option value="en">English</option>
-              <option value="es">Español</option>
-            </select>
+            <li className="show-down">
+              <select
+                value={i18n.language}
+                onChange={(e) =>
+                  i18n.changeLanguage(e.target.value)
+                }
+              >
+                <option value="en">English</option>
+                <option value="es">Español</option>
+              </select>
             </li>
+          </ul>
+          <div className="toggle hide-for-desktop" onClick={handleHeaderToggle}>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </nav>
+
+        <aside className={`hide-for-desktop ${sideBarOpen ? "open" : "closed"}`}>
+          <ul className="flex flex-column align-center justify-center">
             <NavLinks />
+            <li>
+              <select
+                value={i18n.language}
+                onChange={(e) =>
+                  i18n.changeLanguage(e.target.value)
+                }
+              >
+                <option value="en">English</option>
+                <option value="es">Español</option>
+              </select>
+            </li>
           </ul>
         </aside>
       </header>
-      <div className={`overlay hide-for-desktop ${sideBarOpen ? "fade-in" : "fade-out"}`}>
-      </div>
-
-      <main className={sideBarOpen ? "blur" : ""}>
+      <main className={sideBarOpen ? "blur" : ""} onClick={() => setSideBarOpen(false)}>
         <section id="hero" className="hero flex flex-column justify-center align-start">
           <h1 className="show-up">{t("salute")}</h1>
           <h2 className="show-up">Fabián Urbina.</h2>
