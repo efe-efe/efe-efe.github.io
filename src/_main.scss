@@ -124,6 +124,27 @@ main {
       }
     }
   }
+
+  .contact-links {
+    display: flex;
+    list-style-type: none;
+  }
+
+  .social {
+    border-radius: 5px;
+    margin-right: 1rem;
+    padding: 0.5rem;
+
+    &.linkedin {
+      background-color: $linkedin;
+      color: $white;
+    }
+
+    &.email {
+      background-color: $email;
+      color: $white;
+    }
+  }
 }
 
 footer {

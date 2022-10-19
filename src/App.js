@@ -34,6 +34,14 @@ function NavLinks({ slowDown }) {
   );
 }
 
+function Social({ network, label, url }) {
+  return (
+    <a href={url} className={`social ${network}`}>
+      {label}
+    </a>
+  );
+}
+
 function App() {
   const { t, i18n } = useTranslation();
   const [sideBarOpen, setSideBarOpen] = useState(false);
@@ -187,12 +195,12 @@ function App() {
           <h4>{t("contact")}</h4>
           <h2>{t("contactSubtitle")}</h2>
           <p>{t("contactDescription")}</p>
-          <ul>
+          <ul className="contact-links">
             <li>
-              <a href="https://www.linkedin.com/in/fabian-urbina-ampuero-367349149/">LinkedIn</a>
+              <Social url="https://www.linkedin.com/in/fabian-urbina-ampuero-367349149/" label="LinkedIn" network="linkedin" />
             </li>
             <li>
-              <a href="mailto: fabian.urbina@usach.cl">Send Email</a>
+              <Social url="mailto: fabian.urbina@usach.cl" label="Send Email" network="email" />
             </li>
           </ul>
         </section>
