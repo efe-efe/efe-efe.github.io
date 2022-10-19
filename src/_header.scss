@@ -163,4 +163,14 @@ header {
       transform: translateX(calc(100vw - min(75vw, 400px)));
     }
   }
+
+  select {
+    padding: 0.5rem;
+    background-color: transparent;
+    color: $light;
+    font-family: "Roboto Mono", monospace;
+    border: 2px solid $light;
+    border-radius: 5px;
+    outline: none;
+  }
 }
