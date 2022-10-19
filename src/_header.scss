@@ -16,9 +16,7 @@ header {
     cursor: pointer;
 
     &.hidden {
-      transform: translate(
-        -(calc($toggleWidth + $togglePadding * 2), -$headerHeight)
-      );
+      transform: translate(-(calc($toggleWidth + $togglePadding * 2), -$headerHeight));
     }
 
     > span {
