@@ -71,6 +71,7 @@ main {
           filter: grayscale(100%) contrast(0.9);
           height: 100%;
           width: 100%;
+          object-fit: cover;
         }
       }
 

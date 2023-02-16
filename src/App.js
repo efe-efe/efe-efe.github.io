@@ -180,10 +180,7 @@ function App() {
           </div>
 
           <div className="wrapper">
-            <img
-              alt={t("picture")}
-              src="https://media-exp1.licdn.com/dms/image/D4E03AQGhWZabQMdb_g/profile-displayphoto-shrink_800_800/0/1661639551210?e=1668643200&v=beta&t=QNiwMcgexL53GaKry9i9og5oowRCNfW8TtTB0NzjDYA"
-            />
+            <img alt={t("picture")} src={require("./assets/avatar.jpg")} />
           </div>
         </section>
         <section id="experience" className="experience">
