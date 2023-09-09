@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Trans, useTranslation } from "react-i18next";
 
 const resumeURL =
@@ -45,7 +45,6 @@ function Social({ network, label, url }) {
 function App() {
   const { t, i18n } = useTranslation();
   const [sideBarOpen, setSideBarOpen] = useState(false);
-  const [shouldHideHeader, setShouldHideHeader] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [scrollPreviousPosition, setScrollPreviousPosition] = useState(0);
 
@@ -58,25 +57,18 @@ function App() {
     setSideBarOpen(sideBarOpen => !sideBarOpen);
   };
 
-  const handleScroll = () => {
+  const handleScroll = useCallback(() => {
+    setScrollPreviousPosition(scrollPosition);
     setScrollPosition(window.scrollY);
-
-    //TODO: Find a better way to achieve this
-    setTimeout(() => setScrollPreviousPosition(window.scrollY), 0);
-  };
-
-  useEffect(() => {
-    toggleLockBody(sideBarOpen);
-  }, [sideBarOpen]);
-
-  useEffect(() => {
-    if (scrollPosition < scrollPreviousPosition) {
-      setShouldHideHeader(false);
-    } else {
-      setShouldHideHeader(scrollPosition > 70);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [scrollPosition]);
+
+  const shouldHideHeader = scrollPosition > scrollPreviousPosition && scrollPosition > 70;
+  toggleLockBody(sideBarOpen);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [handleScroll]);
 
   useEffect(() => {
     const navbarActionElements = document.querySelectorAll("nav ul li");
@@ -100,13 +92,10 @@ function App() {
       });
     }
 
-    window.addEventListener("scroll", handleScroll);
-
     return () => {
       for (const link of asideLinks) {
         link.removeEventListener("click", () => setSideBarOpen(false));
       }
-      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
