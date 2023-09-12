@@ -4,27 +4,23 @@ import { Trans, useTranslation } from "react-i18next";
 const resumeURL =
   "https://getonbrd-prod.s3.amazonaws.com/uploads/cv/ba25467ac2da640b3831edf51bb4703d/Fabian_Urbina_Curriculum.pdf?X-Amz-Expires=86400&amp;X-Amz-Date=20220915T121348Z&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAJT5MYUSOEN4SITVA%2F20220915%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=abb8413f9e6e85cd2c3e399405dee187b06a83e7dd2da19e1f00148931011a93";
 
-function NavLinks({ slowDown }: { slowDown?: boolean }) {
+function NavLinks({ showDown }: { showDown?: boolean }) {
   const { t } = useTranslation();
 
   return (
     <>
-      <li>
-        <a href="#about" className={slowDown ? "slow-down" : ""}>
-          {t("about")}
-        </a>
+      <li className={showDown ? "show-down" : ""}>
+        <a href="#about">{t("about")}</a>
       </li>
-      <li>
-        <a className={slowDown ? "slow-down" : ""} href="#experience">
-          {t("experience")}
-        </a>
+      <li className={showDown ? "show-down" : ""}>
+        <a href="#experience">{t("experience")}</a>
       </li>
-      <li>
-        <a className={slowDown ? "slow-down" : ""} href="#contact">
+      <li className={showDown ? "show-down" : ""}>
+        <a className={showDown ? "show-down" : ""} href="#contact">
           {t("contact")}
         </a>
       </li>
-      <li>
+      <li className={showDown ? "show-down" : ""}>
         <a className="button" href={resumeURL} download>
           {t("resume")}
         </a>
@@ -125,7 +121,7 @@ function App() {
             efe
           </a>
           <ul className="hide-for-mobile flex align-center">
-            <NavLinks slowDown={true} />
+            <NavLinks showDown={true} />
             <li className="show-down">
               <select value={i18n.language} onChange={e => i18n.changeLanguage(e.target.value)}>
                 <option value="en">English</option>
