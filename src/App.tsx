@@ -33,15 +33,7 @@ function NavLinks({ slowDown }: { slowDown?: boolean }) {
   );
 }
 
-function Social({
-  network,
-  label,
-  url,
-}: {
-  network: string;
-  label: string;
-  url: string;
-}) {
+function Social({ network, label, url }: { network: string; label: string; url: string }) {
   return (
     <a href={url} className={`social ${network}`}>
       {label}
@@ -61,7 +53,7 @@ function App() {
   };
 
   const handleHeaderToggle = () => {
-    setSideBarOpen((sideBarOpen) => !sideBarOpen);
+    setSideBarOpen(sideBarOpen => !sideBarOpen);
   };
 
   const handleScroll = useCallback(() => {
@@ -69,8 +61,7 @@ function App() {
     setScrollPosition(window.scrollY);
   }, [scrollPosition]);
 
-  const shouldHideHeader =
-    scrollPosition > scrollPreviousPosition && scrollPosition > 70;
+  const shouldHideHeader = scrollPosition > scrollPreviousPosition && scrollPosition > 70;
   toggleLockBody(sideBarOpen);
 
   useEffect(() => {
@@ -79,8 +70,7 @@ function App() {
   }, [handleScroll]);
 
   useEffect(() => {
-    const navbarActionElements =
-      document.querySelectorAll<HTMLElement>("nav ul li");
+    const navbarActionElements = document.querySelectorAll<HTMLElement>("nav ul li");
     const asideLinks = document.querySelectorAll("aside ul li a");
     const hero = document.querySelector(".hero");
     const delay = 100;
@@ -97,8 +87,7 @@ function App() {
 
     if (hero) {
       hero.childNodes.forEach((children, index) => {
-        (children as HTMLElement).style.animationDelay =
-          index * delay + delay * navbarActionElements.length + "ms";
+        (children as HTMLElement).style.animationDelay = index * delay + delay * navbarActionElements.length + "ms";
       });
     }
 
@@ -138,10 +127,7 @@ function App() {
           <ul className="hide-for-mobile flex align-center">
             <NavLinks slowDown={true} />
             <li className="show-down">
-              <select
-                value={i18n.language}
-                onChange={(e) => i18n.changeLanguage(e.target.value)}
-              >
+              <select value={i18n.language} onChange={e => i18n.changeLanguage(e.target.value)}>
                 <option value="en">English</option>
                 <option value="es">Español</option>
               </select>
@@ -149,16 +135,11 @@ function App() {
           </ul>
         </nav>
 
-        <aside
-          className={`hide-for-desktop ${sideBarOpen ? "open" : "closed"}`}
-        >
+        <aside className={`hide-for-desktop ${sideBarOpen ? "open" : "closed"}`}>
           <ul className="flex flex-column align-center justify-center">
             <NavLinks />
             <li>
-              <select
-                value={i18n.language}
-                onChange={(e) => i18n.changeLanguage(e.target.value)}
-              >
+              <select value={i18n.language} onChange={e => i18n.changeLanguage(e.target.value)}>
                 <option value="en">English</option>
                 <option value="es">Español</option>
               </select>
@@ -166,14 +147,8 @@ function App() {
           </ul>
         </aside>
       </header>
-      <main
-        className={sideBarOpen ? "blur" : ""}
-        onClick={() => setSideBarOpen(false)}
-      >
-        <section
-          id="hero"
-          className="hero flex flex-column justify-center align-start"
-        >
+      <main className={sideBarOpen ? "blur" : ""} onClick={() => setSideBarOpen(false)}>
+        <section id="hero" className="hero flex flex-column justify-center align-start">
           <h1 className="show-up">{t("salute")}</h1>
           <h2 className="show-up">Fabián Urbina.</h2>
           <h3 className="show-up">{t("shortDescription")}</h3>
@@ -185,15 +160,10 @@ function App() {
             <p>{t("bioFirst")}</p>
             <p>
               <Trans i18nKey="bioSecond">
-                <a
-                  aria-label={t("visitAssayware")}
-                  href="https://www.assayware.com"
-                />
+                <a aria-label={t("visitAssayware")} href="https://www.assayware.com" />
                 <a aria-label={t("visitYapo")} href="https://www.yapo.cl" />
-                <a
-                  aria-label={t("visitSunsfanGG")}
-                  href="https://www.sunsfan.gg"
-                />
+                <a aria-label={t("visitAbilityArenaTeam")} href="https://abilityarena.com/credits" />
+                <a aria-label={t("visitLatamAirlines")} href="https://www.latamairlines.com/" />
               </Trans>
             </p>
           </div>
@@ -206,6 +176,7 @@ function App() {
           <h4>{t("experience")}</h4>
           <p>{t("experienceFirst")}</p>
           <p>{t("experienceSecond")}</p>
+          <p>{t("experienceThird")}</p>
         </section>
         <section id="contact" className="contact flex flex-column align-center">
           <h4>{t("contact")}</h4>
@@ -213,18 +184,10 @@ function App() {
           <p>{t("contactDescription")}</p>
           <ul className="contact-links">
             <li>
-              <Social
-                url="https://www.linkedin.com/in/fabian-urbina-ampuero-367349149/"
-                label="LinkedIn"
-                network="linkedin"
-              />
+              <Social url="https://www.linkedin.com/in/fabian-urbina-ampuero-367349149/" label="LinkedIn" network="linkedin" />
             </li>
             <li>
-              <Social
-                url="mailto: fabian.urbina@usach.cl"
-                label="Send Email"
-                network="email"
-              />
+              <Social url="mailto: fabian.urbina@usach.cl" label="Send Email" network="email" />
             </li>
           </ul>
         </section>
